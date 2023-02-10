@@ -44,6 +44,7 @@ $ yarn run start:prod
 ```
 
 After the app is running, you can setup the database by going to the route `/setup`.
+Then, you can have the view of the API on Swagger directory `/api`.
 
 ## Test
 
