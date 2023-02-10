@@ -8,8 +8,8 @@ import { Product, ProductDocument } from "./schemas/product.schema";
 export class ProductsRepository {
     constructor(@InjectModel(Product.name) private productModel: Model<ProductDocument>) {}
 
-    async find(productsFilterQuery: FilterQuery<Product>): Promise<Product[]> {
-        return this.productModel.find(productsFilterQuery)
+    async find(): Promise<Product[]> {
+        return this.productModel.find();
     }
 
     async findOne(productFilterQuery: FilterQuery<Product>): Promise<Product> {
@@ -23,12 +23,16 @@ export class ProductsRepository {
     }
 
     async findOneAndUpdate(productFilterQuery: FilterQuery<Product>, product: Partial<Product>): Promise<Product> {
-        return this.productModel.findOneAndUpdate(productFilterQuery, product);
+        return this.productModel.findOneAndUpdate(productFilterQuery, product, { new: true });
     }
 
     async delete(productFilterQuery: FilterQuery<Product>): Promise<Product> {
-        const deleted = await this.productModel.deleteOne(productFilterQuery);
-
+        const deleted = this.productModel.deleteOne(productFilterQuery);
+        console.log(deleted);
         return null;
+    }
+
+    async getProductCategories(product: FilterQuery<Product>): Promise<Product> {
+        return this.productModel.findOne(product).select('categories');
     }
 }

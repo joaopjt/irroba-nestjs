@@ -21,16 +21,21 @@ export class ProductsController {
 
   @Post()
   async createProduct(@Body() createProductDto: CreateProductDto): Promise<Product> {
-      return this.productsService.createProduct(createProductDto.name, createProductDto.price, createProductDto.sku)
+      return this.productsService.createProduct(createProductDto.name, createProductDto.price, createProductDto.sku, createProductDto.categories)
   }
 
   @Patch(':id')
-  async updateProduct(@Param('id') id: string, @Body() updateUserDto: UpdateProductDto): Promise<Product> {
-      return this.productsService.updateProduct(id, updateUserDto);
+  async updateProduct(@Param('id') id: string, @Body() updateProductrDto: UpdateProductDto): Promise<Product> {
+      return this.productsService.updateProduct(id, updateProductrDto);
   }
 
-  @Delete(':productId')
-  async deleteProduct(@Param('productId') productId: string): Promise<Product> {
+  @Delete(':id')
+  async deleteProduct(@Param('id') productId: string): Promise<Product> {
     return this.productsService.deleteProduct(productId);
+  }
+
+  @Get(':id/categories')
+  async getProductCategories(@Param('id') categoryId: string): Promise<Product> {
+    return this.productsService.getProductCategories(categoryId);
   }
 }

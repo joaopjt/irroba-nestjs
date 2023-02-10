@@ -10,19 +10,20 @@ export class ProductsService {
     constructor(private readonly productsRepository: ProductsRepository) {}
 
     async getProducts(): Promise<Product[]> {
-        return this.productsRepository.find({});
+        return this.productsRepository.find();
     }
 
-    async getProductById(userId: string): Promise<Product> {
-        return this.productsRepository.findOne({ userId })
+    async getProductById(productId: string): Promise<Product> {
+        return this.productsRepository.findOne({ productId })
     }
 
-    async createProduct(name: string, price: number, sku: string): Promise<Product> {
+    async createProduct(name: string, price: number, sku: string, categories: [string]): Promise<Product> {
         return this.productsRepository.create({
             id: uuidv4(),
             name,
             price,
-            sku
+            sku,
+            categories
         });
     }
 
@@ -32,5 +33,9 @@ export class ProductsService {
 
      async deleteProduct(id: string): Promise<Product> {
         return this.productsRepository.delete({ id });
+    }
+
+    async getProductCategories(id: string): Promise<Product> {
+        return this.productsRepository.getProductCategories({ id });
     }
 }

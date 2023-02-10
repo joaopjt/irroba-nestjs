@@ -10,27 +10,27 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Get()
-  async getCategories(): Promise<Product[]> {
+  async getCategories(): Promise<Category[]> {
       return this.categoriesService.getCategories();
   }
   
   @Get(':id')
-  async getCategory(@Param('id') id: string): Promise<Product> {
-    return this.categoriesService.getProductById(id);
+  async getCategory(@Param('id') id: string): Promise<Category> {
+    return this.categoriesService.getCategoryById(id);
   }
 
   @Post()
-  async createProduct(@Body() createProductDto: CreateProductDto): Promise<Product> {
-      return this.categoriesService.createProduct(createProductDto.name, createProductDto.price, createProductDto.sku)
+  async createCategory(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
+      return this.categoriesService.createCategory(createCategoryDto.name)
   }
 
   @Patch(':id')
-  async updateProduct(@Param('id') id: string, @Body() updateUserDto: UpdateProductDto): Promise<Product> {
-      return this.categoriesService.updateProduct(id, updateUserDto);
+  async updateProduct(@Param('id') id: string, @Body() updateCategoryDto: UpdateCategoryDto): Promise<Category> {
+      return this.categoriesService.updateCategory(id, updateCategoryDto);
   }
 
-  @Delete(':productId')
-  async deleteProduct(@Param('productId') productId: string): Promise<Product> {
-    return this.categoriesService.deleteProduct(productId);
+  @Delete(':id')
+  async deleteProduct(@Param('id') id: string): Promise<Category> {
+    return this.categoriesService.deleteCategory(id);
   }
 }

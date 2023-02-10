@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import Mongoose, { InjectModel } from "@nestjs/mongoose";
 import { FilterQuery, Model } from "mongoose";
 
-import { Category, CategoryDocument } from "./schemas/product.schema";
+import { Category, CategoryDocument } from "./schemas/category.schema";
 
 @Injectable()
 export class CategoriesRepository {
@@ -23,7 +23,9 @@ export class CategoriesRepository {
     }
 
     async findOneAndUpdate(categoryFilterQuery: FilterQuery<Category>, category: Partial<Category>): Promise<Category> {
-        return this.categoriesModel.findOneAndUpdate(categoryFilterQuery, category);
+        let result = await this.categoriesModel.findOneAndUpdate(categoryFilterQuery, category, { new: true });
+
+        return result;
     }
 
     async delete(categoryFilterQuery: FilterQuery<Category>): Promise<Category> {
