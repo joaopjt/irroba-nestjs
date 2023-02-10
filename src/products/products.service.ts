@@ -26,8 +26,8 @@ export class ProductsService {
         });
     }
 
-    async updateProduct(id: string, userUpdates: UpdateProductDto): Promise<Product> {
-        return this.productsRepository.findOneAndUpdate({ id }, userUpdates);
+    async updateProduct(id: string, updates: UpdateProductDto): Promise<Product> {
+        return this.productsRepository.findOneAndUpdate({ id }, updates);
     }
 
      async deleteProduct(id: string): Promise<Product> {

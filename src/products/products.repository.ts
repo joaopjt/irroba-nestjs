@@ -8,8 +8,8 @@ import { Product, ProductDocument } from "./schemas/product.schema";
 export class ProductsRepository {
     constructor(@InjectModel(Product.name) private productModel: Model<ProductDocument>) {}
 
-    async find(usersFilterQuery: FilterQuery<Product>): Promise<Product[]> {
-        return this.productModel.find(usersFilterQuery)
+    async find(productsFilterQuery: FilterQuery<Product>): Promise<Product[]> {
+        return this.productModel.find(productsFilterQuery)
     }
 
     async findOne(productFilterQuery: FilterQuery<Product>): Promise<Product> {

@@ -14,9 +14,9 @@ export class ProductsController {
       return this.productsService.getProducts();
   }
   
-  @Get(':userId')
-  async getUser(@Param('userId') userId: string): Promise<Product> {
-    return this.productsService.getProductById(userId);
+  @Get(':id')
+  async getProduct(@Param('id') id: string): Promise<Product> {
+    return this.productsService.getProductById(id);
   }
 
   @Post()
@@ -24,9 +24,9 @@ export class ProductsController {
       return this.productsService.createProduct(createProductDto.name, createProductDto.price, createProductDto.sku)
   }
 
-  @Patch(':userId')
-  async updateProduct(@Param('userId') userId: string, @Body() updateUserDto: UpdateProductDto): Promise<Product> {
-      return this.productsService.updateProduct(userId, updateUserDto);
+  @Patch(':id')
+  async updateProduct(@Param('id') id: string, @Body() updateUserDto: UpdateProductDto): Promise<Product> {
+      return this.productsService.updateProduct(id, updateUserDto);
   }
 
   @Delete(':productId')
