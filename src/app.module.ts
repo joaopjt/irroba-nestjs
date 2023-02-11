@@ -7,7 +7,9 @@ import { CategoriesModule } from './categories/categories.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.DATABASE_PATH), ProductsModule, CategoriesModule
+    MongooseModule.forRoot(process.env.DATABASE_PATH),
+    ProductsModule,
+    CategoriesModule
   ],
 })
 export class AppModule {}

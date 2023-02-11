@@ -9,7 +9,6 @@ export default class CreateProductDto {
 
     @IsNotEmpty()
     sku: string;
-
-    @IsNotEmpty()
+    
     categories: [string]
 }
