@@ -30,6 +30,8 @@
 $ yarn install
 ```
 
+then, make a copy of the `.env.example` file as `.env` only.
+
 ## Running the app
 
 ```bash
