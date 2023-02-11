@@ -43,6 +43,7 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## Setup Database
 After the app is running, you can setup the database by running in your terminal/bash `yarn run setup`.
 Then, you can have the view of the API on Swagger directory `/api`.
 
