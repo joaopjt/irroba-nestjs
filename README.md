@@ -30,6 +30,8 @@
 $ yarn install
 ```
 
+then, make a copy of the `.env.example` file as `.env` only.
+
 ## Running the app
 
 ```bash
@@ -43,7 +45,8 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-After the app is running, you can setup the database by running in your terminal/bash `yarn run setup`.
+## Setup Database
+After the app is running, you can setup the database by running in your terminal/bash `yarn run setup`.<br />
 Then, you can have the view of the API on Swagger directory `/api`.
 
 ## Test
