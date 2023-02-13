@@ -28,7 +28,7 @@ export class ProductsRepository {
 
     async delete(productFilterQuery: FilterQuery<Product>): Promise<Product> {
         const deleted = this.productModel.deleteOne(productFilterQuery);
-        console.log(deleted);
+
         return null;
     }
 
