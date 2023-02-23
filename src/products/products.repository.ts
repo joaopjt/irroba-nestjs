@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import Mongoose, { InjectModel } from "@nestjs/mongoose";
-import { FilterQuery, Model } from "mongoose";
+import { FilterQuery, Model, Query} from "mongoose";
 
 import { Product, ProductDocument } from "./schemas/product.schema";
 
@@ -26,10 +26,10 @@ export class ProductsRepository {
         return this.productModel.findOneAndUpdate(productFilterQuery, product, { new: true });
     }
 
-    async delete(productFilterQuery: FilterQuery<Product>): Promise<Product> {
+    async delete(productFilterQuery: FilterQuery<Product>): Promise<Query<any, ProductDocument>> {
         const deleted = this.productModel.deleteOne(productFilterQuery);
 
-        return null;
+        return deleted;
     }
 
     async getProductCategories(product: FilterQuery<Product>): Promise<Product> {
